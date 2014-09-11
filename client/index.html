@@ -1,0 +1,49 @@
+<head>
+  <title>Meteor Demo</title>
+</head>
+
+<body>
+  {{> table}}
+</body>
+
+
+
+<template name="table">
+
+  <h2>People ({{numberOfPeople}})</h2>
+
+  <div class="login">{{> loginButtons}}</div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>+1</th>
+        <th>Name</th>
+        <th>Last Voted</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {{#each people}}
+
+        <tr class="{{selected}}">
+          <td>
+          {{#if currentUser}}
+            <button class="btn btn-success {{disabled}}">+{{voteCount}}</button>
+          {{else}}
+              +{{voteCount}}
+          {{/if}}
+          </td>
+          <td> {{name}} </td>
+          <td> {{lastVoted}} </td>
+        </tr>
+
+       {{else}}
+
+         <tr><td colspan="4" >No people in the MallorcaJS Meetup :(</td></tr>
+
+      {{/each}}
+
+    </tbody>
+  </table>
+</template>
